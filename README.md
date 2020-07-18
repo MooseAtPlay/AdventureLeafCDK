@@ -1,2 +1,2 @@
 # AdventureLeafCDK
-Audio-first game for Alexa
+Infrastructure for Adventure Leaf
