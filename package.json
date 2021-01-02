@@ -23,6 +23,9 @@
   "dependencies": {
     "@aws-cdk/aws-lambda": "^1.52.0",
     "@aws-cdk/core": "1.52.0",
+    "ask-sdk": "^2.8.0",
+    "ask-sdk-core": "^2.8.0",
+    "ask-sdk-model": "^1.28.0",
     "source-map-support": "^0.5.16"
   }
 }

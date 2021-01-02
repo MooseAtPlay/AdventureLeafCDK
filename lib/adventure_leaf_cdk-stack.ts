@@ -10,5 +10,11 @@ export class AdventureLeafCdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset('lambda'),
       handler: 'hello.handler'
     });
+
+    const adventureLeaf = new lambda.Function(this, 'AdventureLeafHandler', {
+      runtime: lambda.Runtime.NODEJS_10_X,
+      code: lambda.Code.fromAsset('lambda'),
+      handler: 'index.handler'
+    });  
   }
 }
