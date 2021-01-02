@@ -8,23 +8,49 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'Welcome to Adventure Leaf, you are a leaf blowing in the wind. You can say Play or Help. Which would you like?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
 };
-const HelloWorldIntentHandler = {
+const PlayGameIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PlayGameIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World!';
+        const speakOutput = 'You are floating just above the ground.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .reprompt('There is a fence ahead of you.')
+            .getResponse();
+    }
+};
+const RiseIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RiseIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = 'You are flying high above the ground avoiding the fence.';
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('There is a bird ahead of you.')
+            .getResponse();
+    }
+};
+const FallIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'FallIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = 'You are now tumbling along the ground but hit a fence.';
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Bonk! Would you like to try again?')
             .getResponse();
     }
 };
@@ -34,7 +60,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'Your leaf can be in one of three positions: "flying" high above the ground, "floating" just above the ground, or "tumbling" on the ground. In each state, there are different obsticles to avoid by changing to a different position. You change positions by saying "rise" or "fall". The obstacles make sound when approaching. You have to avoid them by getting your leaf to an appropriate level in time.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -108,8 +134,10 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
         HelpIntentHandler,
+        PlayGameIntentHandler,
+        RiseIntentHandler,
+        FallIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers

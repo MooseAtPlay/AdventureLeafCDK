@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "adventure leaf empty",
+            "invocationName": "adventure leaf",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -16,16 +16,29 @@
                     "samples": []
                 },
                 {
-                    "name": "HelloWorldIntent",
+                    "name": "PlayGameIntent",
                     "slots": [],
                     "samples": [
-                        "hello",
-                        "how are you",
-                        "say hi world",
-                        "say hi",
-                        "hi",
-                        "say hello world",
-                        "say hello"
+                        "play",
+                        "play game"
+                    ]
+                },
+                {
+                    "name": "RiseIntent",
+                    "slots": [],
+                    "samples": [
+                        "rise",
+                        "go up",
+                        "up"
+                    ]
+                },
+                {
+                    "name": "FallIntent",
+                    "slots": [],
+                    "samples": [
+                        "fall",
+                        "go down",
+                        "down"
                     ]
                 },
                 {

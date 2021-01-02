@@ -4,7 +4,6 @@
   "description": "Adventure Leaf Lamdba code",
   "main": "index.js",
   "scripts": {
-    "test": "test"
   },
   "author": "Ryan Morrison-Westphal",
   "license": "ISC",
