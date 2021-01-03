@@ -21,10 +21,10 @@ const PlayGameIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PlayGameIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You are floating just above the ground.';
+        const speakOutput = 'You are floating just above the ground. There is a fence ahead of you.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('There is a fence ahead of you.')
+            //.reprompt('There is a fence ahead of you.')
             .getResponse();
     }
 };
@@ -34,7 +34,7 @@ const RiseIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RiseIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You are flying high above the ground avoiding the fence.';
+        const speakOutput = 'You are flying high above the ground avoiding the fence. There is a bird ahead of you.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('There is a bird ahead of you.')
@@ -47,10 +47,10 @@ const FallIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'FallIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You are now tumbling along the ground but hit a fence.';
+        const speakOutput = 'You are now tumbling along the ground but hit a fence. Bonk! Would you like to try again?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Bonk! Would you like to try again?')
+            .reprompt('Would you like to try again?')
             .getResponse();
     }
 };
@@ -134,10 +134,10 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelpIntentHandler,
         PlayGameIntentHandler,
         RiseIntentHandler,
         FallIntentHandler,
+        HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
