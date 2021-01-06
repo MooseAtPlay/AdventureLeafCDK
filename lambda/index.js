@@ -24,7 +24,7 @@ const PlayGameIntentHandler = {
         const speakOutput = 'You are floating just above the ground. There is a fence ahead of you.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('There is a fence ahead of you.')
+            .reprompt('There is a fence ahead of you.')
             .getResponse();
     }
 };
