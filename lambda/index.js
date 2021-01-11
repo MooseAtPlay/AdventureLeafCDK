@@ -3,12 +3,18 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 
+const level = [
+    '  b',
+    '*b ',
+    '  o',
+];
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome to Adventure Leaf, you are a leaf blowing in the wind. You can say Play or Help. Which would you like?';
+        const speakOutput = 'Welcome to Adventure Leaf update one! You are a leaf blowing in the wind. You can say Play or Help. Which would you like?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -21,6 +27,16 @@ const PlayGameIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'PlayGameIntent';
     },
     handle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        const { position } = sessionAttributes;
+
+        if (typeof position === 'undefined') {
+            sessionAttributes.position = {
+                x: 0,
+                y: 1
+            };
+        }
+
         const speakOutput = 'You are floating just above the ground. There is a fence ahead of you.';
         return handlerInput.responseBuilder
             .speak(speakOutput)

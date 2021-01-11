@@ -28,6 +28,7 @@
                     "slots": [],
                     "samples": [
                         "rise",
+                        "raise",
                         "go up",
                         "up"
                     ]
@@ -37,6 +38,7 @@
                     "slots": [],
                     "samples": [
                         "fall",
+                        "duck",
                         "go down",
                         "down"
                     ]
