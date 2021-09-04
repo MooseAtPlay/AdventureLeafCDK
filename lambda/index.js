@@ -31,13 +31,13 @@ const PlayGameIntentHandler = {
         const { position } = sessionAttributes;
 
         if (typeof position === 'undefined') {
-            sessionAttributes.position = {
+            position = sessionAttributes.position = {
                 x: 0,
                 y: 1
             };
         }
 
-        const speakOutput = 'You are floating just above the ground. There is a fence ahead of you.';
+        const speakOutput = `position ${position.x}, ${position.y}. You are floating just above the ground. There is a fence ahead of you.`;
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('There is a fence ahead of you.')
